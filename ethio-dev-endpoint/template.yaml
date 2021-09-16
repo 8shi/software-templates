@@ -30,19 +30,9 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-  # steps:
-  #   - id: template
-  #     name: Fetch Skeleton + Template
-  #     action: fetch:template
-  #     input:
-  #       url: ./skeleton
-  #       copyWithoutRender:
-  #         - .github/workflows/*
-  #       values:
-  #         component_id: '{{ parameters.component_id }}'
-  #         description: '{{ parameters.description }}'
-  #         destination: '{{ parseRepoUrl parameters.repoUrl }}'
-  #         owner: '{{ parameters.owner }}'
-  # output:
-  #   remoteUrl: '{{ steps.publish.output.remoteUrl }}'
-  #   entityRef: '{{ steps.register.output.entityRef }}'
+  steps:
+    - id: fetch-docs
+      name: Fetch Docs
+      action: fetch:plain
+      input:
+        url: https://api.github.com/users/getachew
