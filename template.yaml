@@ -1,0 +1,46 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+metadata:
+  name: ethio-dev-endpoint
+  title: ethio.dev endpoint
+  description: create an api endpoint on ethio.dev
+  tags:
+    - ethio.dev
+    - api
+spec:
+  owner: web@example.com
+  type: resource
+  parameters:
+    - title: Provide some simple information
+      required:
+        - endpoint_name
+        - owner
+      properties:
+        endpoint_name:
+          title: Name
+          type: string
+          description: Unique name for the endpoint
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  # steps:
+  #   - id: template
+  #     name: Fetch Skeleton + Template
+  #     action: fetch:template
+  #     input:
+  #       url: ./skeleton
+  #       copyWithoutRender:
+  #         - .github/workflows/*
+  #       values:
+  #         component_id: '{{ parameters.component_id }}'
+  #         description: '{{ parameters.description }}'
+  #         destination: '{{ parseRepoUrl parameters.repoUrl }}'
+  #         owner: '{{ parameters.owner }}'
+  # output:
+  #   remoteUrl: '{{ steps.publish.output.remoteUrl }}'
+  #   entityRef: '{{ steps.register.output.entityRef }}'
