@@ -5,8 +5,10 @@ metadata:
   title: ethio.dev endpoint
   description: create an api endpoint on ethio.dev
   tags:
-    - ethio.dev
+    - serverless
     - api
+    - worker
+    - function
 spec:
   owner: web@example.com
   type: resource
