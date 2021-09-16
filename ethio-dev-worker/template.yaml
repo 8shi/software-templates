@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+metadata:
+  name: ethio-dev-worker
+  title: create a function on your api gateway
+  description: creates a subdomain on ethio.dev. You can then use create serverless function to add api endpoints on this subdomain
+  tags:
+    - subdomain
+    - api
+    - serverless
+    - function
+spec:
+  owner: web@example.com
+  type: resource
+  parameters:
+    - title: Provide details for your function
+      required:
+        - function_name
+        - route
+        - gateway
+      properties:
+        function_name:
+          title: Function Name
+          type: string
+          description: A name for your serverless function.
+        function_name:
+          title: Function Name
+          type: string
+          description: A name for your serverless function.
+        gateway:
+          title: Gateway
+          type: string
+          description: The api gateway name aka the subdomain where you want to attach this route and function to.
+          ui:options:
+            allowedKinds:
+              - Resource
+  steps:
+    - id: fetch-docs
+      name: Fetch Docs
+      action: fetch:plain
+      input:
+        url: https://api.github.com/users/getachew

@@ -1,27 +1,28 @@
 apiVersion: backstage.io/v1beta2
 kind: Template
 metadata:
-  name: ethio-dev-subdomain
-  title: ethio.dev subdomain
-  description: creates a subdomain on ethio.dev. You can then use create serverless function to add api endpoints on this subdomain
+  name: ethio-dev-api-gateway
+  title: ethio.dev api gateway
+  description: creates a subdomain on ethio.dev. You can then create routes and serverless functions and use this subdomain as an api gateway
   tags:
+    - gateway
     - subdomain
     - api
     - serverless
     - function
 spec:
-  owner: web@example.com
+  owner: dev@ethio.dev
   type: resource
   parameters:
-    - title: Provide some simple information
+    - title: Provide some information on this subdomain requirements
       required:
-        - endpoint_name
+        - subdomain
         - owner
       properties:
-        endpoint_name:
+        subdomain:
           title: Name
           type: string
-          description: Unique name for the endpoint
+          description: Unique name for the subdomain
         owner:
           title: Owner
           type: string
