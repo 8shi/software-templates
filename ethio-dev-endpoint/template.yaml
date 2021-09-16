@@ -1,38 +1,107 @@
 apiVersion: backstage.io/v1beta2
 kind: Template
 metadata:
-  name: ethio-dev-endpoint
-  title: ethio.dev endpoint
-  description: create an api endpoint on ethio.dev
-  tags:
-    - serverless
-    - api
-    - worker
-    - function
+  name: v1beta2-demo
+  title: Test Action template
+  description: scaffolder v1beta2 template demo publishing to github
 spec:
-  owner: web@example.com
-  type: resource
+  owner: backstage/techdocs-core
+  type: service
+
   parameters:
-    - title: Provide some simple information
+    - title: Fill in some steps
       required:
-        - endpoint_name
+        - name
         - owner
       properties:
-        endpoint_name:
+        name:
           title: Name
           type: string
-          description: Unique name for the endpoint
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
         owner:
           title: Owner
           type: string
           description: Owner of the component
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds:
+            allowedKinds: 
               - Group
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System
+            
+    - title: Choose a location
+      required:
+        - repoUrl
+        - dryRun
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
+
   steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: '{{ parameters.name }}'
+          owner: '{{ parameters.owner }}'         
+          system: '{{ parameters.system }}'
+          destination: '{{ parseRepoUrl parameters.repoUrl }}'
+
     - id: fetch-docs
       name: Fetch Docs
       action: fetch:plain
       input:
-        url: https://api.github.com/users/getachew
+        targetPath: ./community
+        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+
+    - id: publish
+      if: '{{ not parameters.dryRun }}'
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: 'This is {{ parameters.name }}'
+        repoUrl: '{{ parameters.repoUrl }}'
+
+    - id: register
+      if: '{{ not parameters.dryRun }}'
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: '{{ steps.publish.output.repoContentsUrl }}'
+        catalogInfoPath: '/catalog-info.yaml'
+
+    - name: Results
+      if: '{{ parameters.dryRun }}'
+      action: debug:log
+      input:
+        listWorkspace: true
+
+  output:
+    links:
+      - title: Repository
+        url: '{{ steps.publish.output.remoteUrl }}'
+      - title: Open in catalog
+        icon: 'catalog'
+        entityRef: '{{ steps.register.output.entityRef }}'
