@@ -3,12 +3,13 @@ kind: Template
 metadata:
   name: ethio-dev-worker
   title: create a function on your api gateway
-  description: creates a subdomain on ethio.dev. You can then use create serverless function to add api endpoints on this subdomain
+  description: Create a route and attach a function on that route under a specified api gateway. This potentially generates a repo with serverless code
   tags:
-    - subdomain
-    - api
-    - serverless
+    - worker
     - function
+    - serverless
+    - api
+    - route
 spec:
   owner: web@example.com
   type: resource
