@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1beta2
 kind: Template
 metadata:
   name: ethio-dev-worker
-  title: create a function on your api gateway
+  title: serverless function
   description: Create a route and attach a function on that route under a specified api gateway. This potentially generates a repo with serverless code
   tags:
     - worker
