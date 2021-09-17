@@ -24,10 +24,10 @@ spec:
           title: Function Name
           type: string
           description: A name for your serverless function.
-        function_name:
-          title: Function Name
+        route:
+          title: route
           type: string
-          description: A name for your serverless function.
+          description: a route where you can attach this function to eg. subdomain.ethio.dev/route. 
         gateway:
           title: Gateway
           type: string
