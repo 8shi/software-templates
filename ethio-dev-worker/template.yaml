@@ -11,7 +11,7 @@ metadata:
     - api
     - route
 spec:
-  owner: web@example.com
+  owner: dev@ethio.dev
   type: resource
   parameters:
     - title: Provide details for your function
