@@ -34,5 +34,5 @@ spec:
       name: Create Subdomain
       action: ethiodev:create-subdomain
       input:
-        name: '{{ parameters.subdomain }}'
+        subdomain: '{{ parameters.subdomain }}'
         owner: '{{ parameters.owner }}'
