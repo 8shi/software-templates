@@ -12,7 +12,7 @@ spec:
   owner: dev@ethio.dev
   type: resource
   parameters:
-    - title: Provide some information on this subdomain requirements
+    - title: Provide details for your API Gateway
       required:
         - subdomain
         - owner
@@ -30,8 +30,9 @@ spec:
             allowedKinds:
               - Group
   steps:
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
+    - id: create-subdomain
+      name: Create Subdomain
+      action: ethiodev:create-subdomain
       input:
-        url: https://api.github.com/users/getachew
+        name: '{{ parameters.subdomain }}'
+        owner: '{{ parameters.owner }}'
