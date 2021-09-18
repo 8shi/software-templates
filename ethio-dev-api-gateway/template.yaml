@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1beta2
 kind: Template
 metadata:
   name: ethio-dev-api-gateway
-  title: ethio.dev api gateway
+  title: API Gateway
   description: Create a subdomain on ethio.dev. This subdomain is then your api gateway to attach your serverless functions and routes
   tags:
     - gateway
