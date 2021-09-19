@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: 9shi-apigateway
+  description: the organization's subdomain on ethio.dev used as an api gateway
+spec:
+  type: api-gateway
+  owner: team-a
+  system: serverless
