@@ -14,7 +14,7 @@ spec:
   owner: dev@ethio.dev
   type: resource
   parameters:
-    - title: Provide details for your serverless function
+    - title: Provide a name, route and gateway for your serverless function
       required:
         - component_id
         - owner
