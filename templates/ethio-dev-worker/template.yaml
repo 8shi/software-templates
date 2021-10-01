@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: ethio-dev-worker
   title: Serverless Function
-  description: Create a route and attach a function on that route under a specified api gateway. This potentially generates a repo with serverless code
+  description: Create a function and attach it to a route under a specified api gateway. This potentially generates a repo with serverless code
   tags:
     - worker
     - function

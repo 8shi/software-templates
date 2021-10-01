@@ -1,15 +1,7 @@
-# 👷 `worker-template` Hello World
+# 👷 `ethio.dev-worker-template` Hello World
 
-A template for kick starting a Cloudflare worker project.
+A template for kick starting a Cloudflare worker via an ethio.dev api gateway.
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
+This project shall be automatically built and deployed from your ethio.dev software management console.
 
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+[`index.js`](./index.js) is the content of the Workers script.

@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: ethio-dev-api-gateway
   title: API Gateway
-  description: Create subdomain on ethio.dev. This subdomain is your api gateway to attach your serverless functions and routes
+  description: Create an API gateway. This will be a subdomain in *.ethio.dev and is your api gateway to attach  serverless functions and routes
   tags:
     - gateway
     - subdomain
