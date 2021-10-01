@@ -46,6 +46,8 @@ spec:
       action: fetch:template
       input:
         url: ./gateway
+        copyWithoutRender:
+          - .github/workflows/*
         values:
           component_id: '{{ parameters.subdomain }}'
           description: '{{ parameters.subdomain }} API Gateway'
