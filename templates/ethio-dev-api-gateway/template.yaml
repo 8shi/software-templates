@@ -46,8 +46,6 @@ spec:
       action: fetch:template
       input:
         url: ./gateway
-        copyWithoutRender:
-          - .github/workflows/*
         values:
           component_id: '{{ parameters.subdomain }}'
           description: '{{ parameters.subdomain }} API Gateway'
@@ -59,7 +57,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: 'This is {{ parameters.subdomain }}'
+        description: '{{ parameters.subdomain }}.ethio.dev'
         repoUrl: '{{ parameters.repoUrl }}'
 
     - id: register
